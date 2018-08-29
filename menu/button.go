@@ -8,6 +8,8 @@ type Button struct {
 	URL        string    `json:"url,omitempty"`
 	MediaID    string    `json:"media_id,omitempty"`
 	SubButtons []*Button `json:"sub_button,omitempty"`
+	AppId      string    `json:"appid,omitempty"`
+	PagePath   string    `json:"pagepath,omitempty"`
 }
 
 //SetSubButton 设置二级菜单
@@ -28,6 +30,17 @@ func (btn *Button) SetClickButton(name, key string) {
 	btn.URL = ""
 	btn.MediaID = ""
 	btn.SubButtons = nil
+}
+
+//SetMiniprogramButton btn 为miniprogram类型
+func (btn *Button) SetMiniprogramButton(name, appId, url, pagePath string) {
+	btn.Type = "miniprogram"
+	btn.Name = name
+	btn.Key = ""
+	btn.URL = url
+	btn.AppId = appId
+	btn.SubButtons = nil
+	btn.PagePath = pagePath
 }
 
 //SetViewButton view类型
