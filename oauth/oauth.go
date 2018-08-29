@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/silenceper/wechat/context"
-	"github.com/silenceper/wechat/util"
+	"github.com/panawala/wechat/context"
+	"github.com/panawala/wechat/util"
 )
 
 const (
