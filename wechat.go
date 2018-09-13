@@ -14,6 +14,7 @@ import (
 	"github.com/panawala/wechat/template"
 	"github.com/panawala/wechat/user"
 	"github.com/panawala/wechat/pay"
+	"github.com/panawala/wechat/qrcode"
 )
 
 // Wechat struct
@@ -27,9 +28,9 @@ type Config struct {
 	AppSecret      string
 	Token          string
 	EncodingAESKey string
-	PayMchID       string  //支付 - 商户 ID
-	PayNotifyURL   string  //支付 - 接受微信支付结果通知的接口地址
-	PayKey         string  //支付 - 商户后台设置的支付 key
+	PayMchID       string //支付 - 商户 ID
+	PayNotifyURL   string //支付 - 接受微信支付结果通知的接口地址
+	PayKey         string //支付 - 商户后台设置的支付 key
 	Cache          cache.Cache
 }
 
@@ -73,6 +74,11 @@ func (wc *Wechat) GetOauth() *oauth.Oauth {
 // GetMaterial 素材管理
 func (wc *Wechat) GetMaterial() *material.Material {
 	return material.NewMaterial(wc.Context)
+}
+
+// GetQrcode 二维码管理
+func (wc *Wechat) GetQrcode() *qrcode.Qrcode {
+	return qrcode.NewQrcode(wc.Context)
 }
 
 // GetJs js-sdk配置
