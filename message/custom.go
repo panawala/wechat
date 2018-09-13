@@ -25,10 +25,9 @@ type CustomMessage struct {
 }
 
 //NewCustomText 回复图片消息
-func NewCustomText(toUser, content string) *CustomMessage {
+func NewCustomText(content string) *CustomMessage {
 	text := new(CustomMessage)
 	text.SetMsgType(MsgTypeText)
-	text.SetToUser(toUser)
 	customText := new(CustomText)
 	customText.Content = content
 	text.Text = customText
@@ -36,10 +35,9 @@ func NewCustomText(toUser, content string) *CustomMessage {
 }
 
 //NewCustomImage 回复图片消息
-func NewCustomImage(toUser, mediaID string) *CustomMessage {
+func NewCustomImage(mediaID string) *CustomMessage {
 	image := new(CustomMessage)
 	image.SetMsgType(MsgTypeImage)
-	image.SetToUser(toUser)
 	customImage := new(CustomMedia)
 	customImage.MediaID = mediaID
 	image.Image = customImage
@@ -47,10 +45,9 @@ func NewCustomImage(toUser, mediaID string) *CustomMessage {
 }
 
 //NewCustomVoice 回复声音消息
-func NewCustomVoice(toUser, mediaID string) *CustomMessage {
+func NewCustomVoice(mediaID string) *CustomMessage {
 	voice := new(CustomMessage)
 	voice.SetMsgType(MsgTypeVoice)
-	voice.SetToUser(toUser)
 	voice.Voice.MediaID = mediaID
 
 	customVoice := new(CustomMedia)
@@ -60,10 +57,9 @@ func NewCustomVoice(toUser, mediaID string) *CustomMessage {
 }
 
 //NewCustom 回复视频消息
-func NewCustomVideo(toUser, mediaID, thumbMediaId, title, description string) *CustomMessage {
+func NewCustomVideo(mediaID, thumbMediaId, title, description string) *CustomMessage {
 	video := new(CustomMessage)
 	video.SetMsgType(MsgTypeVideo)
-	video.SetToUser(toUser)
 	customVideo := new(CustomVideo)
 	customVideo.MediaID = mediaID
 	customVideo.ThumbMediaId = thumbMediaId

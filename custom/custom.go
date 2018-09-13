@@ -31,7 +31,8 @@ type resAddCustom struct {
 }
 
 //SendMessage 发送客服消息
-func (custom *Custom) SendMessage(message *message.CustomMessage) (err error) {
+func (custom *Custom) SendMessage(toUser string, message *message.CustomMessage) (err error) {
+	message.SetToUser(toUser)
 	var accessToken string
 	accessToken, err = custom.GetAccessToken()
 	if err != nil {
