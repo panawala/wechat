@@ -15,6 +15,7 @@ import (
 	"github.com/panawala/wechat/user"
 	"github.com/panawala/wechat/pay"
 	"github.com/panawala/wechat/qrcode"
+	"github.com/panawala/wechat/custom"
 )
 
 // Wechat struct
@@ -79,6 +80,11 @@ func (wc *Wechat) GetMaterial() *material.Material {
 // GetQrcode 二维码管理
 func (wc *Wechat) GetQrcode() *qrcode.Qrcode {
 	return qrcode.NewQrcode(wc.Context)
+}
+
+// GetCustom 二维码管理
+func (wc *Wechat) GetCustom() *custom.Custom {
+	return custom.NewCustom(wc.Context)
 }
 
 // GetJs js-sdk配置

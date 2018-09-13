@@ -83,15 +83,15 @@ type MixMessage struct {
 	URL          string  `xml:"Url"`
 
 	//事件相关
-	Event     EventType `xml:"Event"`
-	EventKey  string    `xml:"EventKey"`
-	Ticket    string    `xml:"Ticket"`
-	Latitude  string    `xml:"Latitude"`
-	Longitude string    `xml:"Longitude"`
-	Precision string    `xml:"Precision"`
-	MenuID    string    `xml:"MenuId"`
-	Status    string    `xml:"Status"`
-	SessionFrom string  `xml:"SessionFrom"`
+	Event       EventType `xml:"Event"`
+	EventKey    string    `xml:"EventKey"`
+	Ticket      string    `xml:"Ticket"`
+	Latitude    string    `xml:"Latitude"`
+	Longitude   string    `xml:"Longitude"`
+	Precision   string    `xml:"Precision"`
+	MenuID      string    `xml:"MenuId"`
+	Status      string    `xml:"Status"`
+	SessionFrom string    `xml:"SessionFrom"`
 
 	ScanCodeInfo struct {
 		ScanType   string `xml:"ScanType"`
@@ -159,5 +159,21 @@ func (msg *CommonToken) SetCreateTime(createTime int64) {
 
 //SetMsgType set MsgType
 func (msg *CommonToken) SetMsgType(msgType MsgType) {
+	msg.MsgType = msgType
+}
+
+// CommonCustom 消息中通用的结构
+type CommonCustom struct {
+	ToUser  string  `json:"touser"`
+	MsgType MsgType `json:"msgtype"`
+}
+
+//SetToUserName set ToUserName
+func (msg *CommonCustom) SetToUser(toUser string) {
+	msg.ToUser = toUser
+}
+
+//SetMsgType set MsgType
+func (msg *CommonCustom) SetMsgType(msgType MsgType) {
 	msg.MsgType = msgType
 }
