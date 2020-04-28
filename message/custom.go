@@ -15,13 +15,21 @@ type CustomVideo struct {
 	Description  string `json:"description"`
 }
 
+type CustomMiniProgramPage struct {
+	Title        string `json:"title"`
+	AppId        string `json:"appid"`
+	PagePath     string `json:"pagepath"`
+	ThumbMediaId string `json:"thumb_media_id"`
+}
+
 //客服 图片消息
 type CustomMessage struct {
 	CommonCustom
-	Text  *CustomText  `json:"text,omitempty"`
-	Image *CustomMedia `json:"image,omitempty"`
-	Voice *CustomMedia `json:"voice,omitempty"`
-	Video *CustomVideo `json:"video,omitempty"`
+	Text            *CustomText            `json:"text,omitempty"`
+	Image           *CustomMedia           `json:"image,omitempty"`
+	Voice           *CustomMedia           `json:"voice,omitempty"`
+	Video           *CustomVideo           `json:"video,omitempty"`
+	MiniProgramPage *CustomMiniProgramPage `json:"miniprogrampage,omitempty"`
 }
 
 //NewCustomText 回复图片消息
@@ -67,4 +75,16 @@ func NewCustomVideo(mediaID, thumbMediaId, title, description string) *CustomMes
 	customVideo.Description = description
 	video.Video = customVideo
 	return video
+}
+
+//NewCustom 回复视频消息
+func NewCustomMiniProgramPage(appId, thumbMediaId, title, pagePath string) *CustomMessage {
+	miniProgramPage := new(CustomMessage)
+	miniProgramPage.SetMsgType(MsgTypeMiniProgramPage)
+	customMiniProgramPage := new(CustomMiniProgramPage)
+	customMiniProgramPage.AppId = appId
+	customMiniProgramPage.ThumbMediaId = thumbMediaId
+	customMiniProgramPage.Title = title
+	customMiniProgramPage.PagePath = pagePath
+	return miniProgramPage
 }

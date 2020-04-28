@@ -31,6 +31,9 @@ const (
 	MsgTypeTransfer = "transfer_customer_service"
 	//MsgTypeEvent 表示事件推送消息
 	MsgTypeEvent = "event"
+
+	//小程序卡片页
+	MsgTypeMiniProgramPage = "miniprogrampage"
 )
 
 const (
