@@ -40,9 +40,13 @@ func NewQrcode(context *context.Context) *Qrcode {
 
 //reqQrcode 请求结果
 
-type actionInfo struct {
+type actionInfoScene struct {
 	SceneId  int    `json:"scene_id,omitempty"`
 	SceneStr string `json:"scene_str,omitempty"`
+}
+
+type actionInfo struct {
+	Scene actionInfoScene `json:"scene"`
 }
 
 type reqQrcode struct {
@@ -73,7 +77,7 @@ func (qrcode *Qrcode) AddQrcode(actionName string, expireSeconds, sceneId int, s
 	req := &reqQrcode{
 		ExpireSeconds: expireSeconds,
 		ActionName:    actionName,
-		ActionInfo:    actionInfo{SceneId: sceneId, SceneStr: sceneStr},
+		ActionInfo:    actionInfo{Scene: actionInfoScene{SceneId: sceneId, SceneStr: sceneStr}},
 	}
 
 	uri := fmt.Sprintf("%s?access_token=%s", addQrcodeURL, accessToken)
