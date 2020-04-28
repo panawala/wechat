@@ -86,5 +86,6 @@ func NewCustomMiniProgramPage(appId, thumbMediaId, title, pagePath string) *Cust
 	customMiniProgramPage.ThumbMediaId = thumbMediaId
 	customMiniProgramPage.Title = title
 	customMiniProgramPage.PagePath = pagePath
+	miniProgramPage.MiniProgramPage = customMiniProgramPage
 	return miniProgramPage
 }
